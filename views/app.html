@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+	<head>
+		<meta charset="utf-8">
+		<title>balance</title>
+		<link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="static/css/ledger.css" rel="stylesheet">
+		<script src="static/lib/jquery-1.7.2.min.js"></script>
+		<script src="static/lib/underscore-min.js"></script>
+		<script src="static/lib/angular-1.0.0.min.js "></script>
+		<script src="static/lib/accounting.min.js"></script>
+		<script src="static/app/controllers.js "></script>
+		<style type="text/css">
+			.css-form input.ng-invalid.ng-dirty {
+			background-color: #FA787E;
+			}
+			.css-form input.ng-valid.ng-dirty {
+			background-color: #78FA89;
+			}
+		</style>
+	</head>
+	<body ng-controller="LedgerCtrl">
+		<div id="bg">
+			<div class="container">
+				<header class="jumbotron subhead">
+					<h1>Ledger</span><small>a simple entry system</small></h1>
+				</header>
+				<div class="row">
+					<div class="span6">
+						<form style="padding-top: 40px;" name="entryForm" class="form-horizontal css-form">
+							<div class="control-group">
+								<label class="control-label">Date</label>
+								<div class="controls">
+									<input type="text" class="input-small ng-valid ng-dirty" ng-model="form.date" ng-pattern="date"  required/>
+									<p class="help-block">hint: yyyy-mm-dd</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Debit/Credit</label>
+								<div class="controls">
+									<input type="text" class="input-small" ng-model="form.transaction" ng-pattern="transaction" required/>
+									<p class="help-block">(-) for debit. For example, -200.</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="input01">Description</label>
+								<div class="controls">
+									<textarea rows="3" class="input-xlarge" ng-model="form.description"></textarea>
+									<p class="help-block">describe your entry.</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<button ng-disabled="isSubmitDisabled()" ng-click="submit()">Add Entry</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="span6">
+						<div style="padding-top: 20px; margin-right: 18px;">
+							<table class="table table-striped table-condensed">
+								<thead>
+									<th>date</th>
+									<th>debit/credit</th>
+									<th>balance</th>
+									<th>description</th>
+								</thead>
+								<tbody>
+									<tr ng-repeat="entry in entries">
+										<td>{{entry.date}}</td>
+										<td>{{entry.transaction}}</td>
+										<td>{{entry.balance}}</td>
+										<td>{{entry.description}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
