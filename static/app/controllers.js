@@ -2,8 +2,8 @@ var LedgerCtrl = function($scope, $filter) {
 
     $scope.constructDateString = function() {
         var d = new Date(),
-            day = (d.getDate().toString().length == 1) ? '0' + d.getDate() : d.getDate() 
-            month = (d.getMonth().toString().length == 1) ? '0' + d.getMonth() : d.getMonth() 
+            day = (d.getDate().toString().length == 1) ? '0' + d.getDate() : d.getDate(),
+            month = (d.getMonth().toString().length == 1) ? '0' + (d.getMonth() + 1) : (d.getMonth() + 1),
             year = d.getFullYear();
 
         return year + '-' + month + '-' + day;
