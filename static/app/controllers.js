@@ -49,7 +49,7 @@ var LedgerCtrl = function($scope, $filter) {
 
         balance = accounting.unformat(entries[entries.length - 1].balance) + accounting.unformat(form.transaction);
         form['balance'] = accounting.formatMoney(balance);
-        form.transaction = accounting.formatMoney(balance);
+        form.transaction = accounting.formatMoney(form.transaction);
         entries.push(form);
         $scope.form = angular.copy(master);
     };
